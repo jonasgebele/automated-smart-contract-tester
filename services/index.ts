@@ -32,7 +32,7 @@ app.use(
   rateLimit({
     windowMs: 2 * 60 * 1000,
     limit: 100,
-    keyGenerator: (req) => req.ip
+    keyGenerator: (req) => req.ip || 'default-ip'
   })
 ); // Apply rate limiting: Allow a maximum of 20 requests per IP address in a 2-minute window
 app.use(`/api/${APP_NAME}/services/v1`, apiRouter); // Mount modular routes with the common prefix
